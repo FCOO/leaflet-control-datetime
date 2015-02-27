@@ -9,8 +9,11 @@ http://jblarsen.github.io/leaflet-control-datetime/
 Leaflet, jQuery, jQuery UI, fontawesome and moment.
 
 http://leafletjs.com/
+
 http://jquery.com/
+
 http://fortawesome.github.io/Font-Awesome/
+
 http://momentjs.com/
 
 ## Usage
