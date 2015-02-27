@@ -1,0 +1,27 @@
+{
+  "name": "leaflet-control-datetime",
+  "main": "leaflet-control-datetime.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/jblarsen/leaflet-control-datetime",
+  "authors": [
+    "Jesper Baasch-Larsen <jla@fcoo.dk>"
+  ],
+  "description": "Leaflet control for changing dates and times",
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Leaflet": "https://github.com/jblarsen/Leaflet.git#master",
+    "fontawesome": "~4.3.0",
+    "jquery-ui": "~1.11.3",
+    "moment": "~2.9.0"
+  }
+}

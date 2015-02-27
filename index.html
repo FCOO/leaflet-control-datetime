@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet control controlling time of time selection enabled layers</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/ui-lightness/jquery-ui.css" />
+    <link rel="stylesheet" href="leaflet-control-datetime.css" />
+</head>
+<body>
+    <div id="map" style="width: 600px; height: 400px"></div>
+    <div id="info"></div>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
+    <script src="leaflet-control-datetime.js" charset="UTF-8"></script>
+    <script>
+        var map = L.map('map').setView([56.5, 12.0], 5);
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors</a>'
+        }).addTo(map);
+        var myDates = [
+            new Date(2015,2,26,1,0,0,0),
+            new Date(2015,2,26,3,0,0,0),
+            new Date(2015,2,26,6,0,0,0),
+            new Date(2015,2,26,9,0,0,0),
+            new Date(2015,2,27,3,0,0,0)];
+        var $info_elem = $('#info');
+        var myCallback = function(event_type, current_date) {
+            $info_elem.html("Event type = " + event_type + '<br />Current date = ' + current_date);
+        }
+        map.addControl(new L.Control.Datetime({'datetimes': myDates,
+                                               'callback': myCallback}));
+    </script>
+</body>
+</html>

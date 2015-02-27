@@ -1,0 +1,57 @@
+.leaflet-control-datetime-title {
+	font-size: larger;
+	font-weight: bold;
+	display: block;
+	position: relative;
+}
+
+.leaflet-control-datetime-dateselect {
+	font-size: normal;
+	font-weight: normal;
+	display: block;
+	position: relative;
+}
+
+.leaflet-control-datetime-localtime {
+	display: inline-block;
+} 
+
+.leaflet-control-datetime-float-left {
+	float: left;
+}
+
+.leaflet-control-datetime-mleft {
+	margin-left: 7px;
+}
+
+.leaflet-control-datetime-datediv {
+	cursor: pointer; 
+}
+
+.leaflet-control-datetime-clearfloat {
+	clear: all;
+}
+
+#leaflet-control-datetime-range {
+        height:100%;
+        top: 0;
+        width: 0%;
+        background: #00CC00;
+}
+
+/* We override the jQuery UI slider colors */
+.ui-slider {
+    background: #E50000;
+}
+.ui-slider-range {
+    /*background: linear-gradient(to right, #00CC00, #ECE903, #E50000);*/
+    background: #ECE903;
+}
+.slider-green {
+    float: left;
+    height: 100%;
+    width: 100%;
+    background: #00CC00;
+    border-radius: 0 4px 4px 0;
+}
+
