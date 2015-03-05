@@ -210,6 +210,7 @@ L.Control.Datetime = L.Control.extend({
                         imax = parseInt(i);
                     }
                 }
+                // FIXME: Do not access the DOM
                 var sliderRange = $("#leaflet-control-datetime-range");
                 if (imax > imin) {
                     // Calculate slider percentages
