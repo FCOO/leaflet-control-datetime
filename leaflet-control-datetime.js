@@ -182,8 +182,8 @@ L.Control.Datetime = L.Control.extend({
                 // Find min and max time
                 this._map.eachLayer(function (layer) {
                     if (layer._overlay !== undefined && layer._overlay === true) {
-                        if (layer.getTimesteps !== undefined) {
-                            var timesteps = layer.getTimesteps();
+                        if (layer.timesteps !== undefined) {
+                            var timesteps = layer.timesteps;
                             if (timesteps !== null && timesteps.length > 1) {
                                 tmin = (timesteps[0] < tmin ? timesteps[0] : tmin);
                                 tmax = (timesteps[timesteps.length-1] > tmax ? timesteps[timesteps.length-1] : tmax);
