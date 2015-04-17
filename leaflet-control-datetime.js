@@ -94,9 +94,6 @@ L.Control.Datetime = L.Control.extend({
             value: select_index,
             slide: this._sliderChanged
         });
-        if (L.Browser.mobile) {
-            sliderDiv.hide();
-        }
         // Create time slider shade
         sliderRange = $('<div id="leaflet-control-datetime-range"></div>');
         sliderDiv.append(sliderRange);
