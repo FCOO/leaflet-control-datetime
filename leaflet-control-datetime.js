@@ -43,7 +43,7 @@ L.Control.Datetime = L.Control.extend({
     },
 
     _createDatetimeSelector: function(container) {
-        if (this.options.title) {
+        if (!L.Browser.mobile && this.options.title) {
             var titleDiv = L.DomUtil.create('div', 'leaflet-control-datetime-title', container);
             titleDiv.innerHTML = this.options.title;
         }
@@ -94,6 +94,9 @@ L.Control.Datetime = L.Control.extend({
             value: select_index,
             slide: this._sliderChanged
         });
+        if (L.Browser.mobile) {
+            sliderDiv.hide();
+        }
         // Create time slider shade
         sliderRange = $('<div id="leaflet-control-datetime-range"></div>');
         sliderDiv.append(sliderRange);
@@ -170,6 +173,9 @@ L.Control.Datetime = L.Control.extend({
         var txt = this._('Use local time') + ' (GMT' + formatTimezone() + ')';
         var spn = lbl.append(timecb).append($('<span>' + txt + '</span>'));
         var localdiv = $('<div>', {"class": "leaflet-control-datetime-localtime"}).append(spn);
+        if (L.Browser.mobile) {
+            localdiv.hide();
+        }
         localdiv.appendTo(container);
     },
 
