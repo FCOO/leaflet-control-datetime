@@ -99,26 +99,31 @@ L.Control.Datetime = L.Control.extend({
         sliderDiv.append(sliderRange);
 
         // Add datetime button controls
+        if (!L.Browser.mobile) {
+            var btn_size = 'lg';
+        } else {
+            var btn_size = '2x';
+        }
         var buttonDiv = L.DomUtil.create('div', 'leaflet-control-datetime-buttondiv', container);
-        var startButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-fast-backward fa-lg"></i></button>');
+        var startButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-fast-backward fa-' + btn_size + '"></i></button>');
         startButton.click(this._datetimeStart);
         startButton.appendTo(buttonDiv);
 
-        var backButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-step-backward fa-lg"></i></button>');
+        var backButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-step-backward fa-' + btn_size + '"></i></button>');
         backButton.click(this._datetimeBack);
         backButton.appendTo(buttonDiv);
 
         var nowstr = this._('Now');
-        nowstr = '<button class="btn btn-default btn-lg">' + nowstr + '</button>';
+        nowstr = '<button class="btn btn-default btn-lg"><span class="fa fa-' + btn_size + '">' + nowstr + '</span></button>';
         var nowButton = $(nowstr);
         nowButton.click(this._datetimeNow);
         nowButton.appendTo(buttonDiv);
 
-        var forwardButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-step-forward fa-lg"></i></button>');
+        var forwardButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-step-forward fa-' + btn_size + '"></i></button>');
         forwardButton.click(this._datetimeForward);
         forwardButton.appendTo(buttonDiv);
 
-        var endButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-fast-forward fa-lg"></i></button>');
+        var endButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-fast-forward fa-' + btn_size + '"></i></button>');
         endButton.click(this._datetimeEnd);
         endButton.appendTo(buttonDiv);
 
