@@ -12,6 +12,7 @@ L.Control.Datetime = L.Control.extend({
         , title: null
         , language: null
         , position: 'topright'
+        , mobile: false
         , visibility: 'visible'
         , vertical: false
         , localtime: false
@@ -43,7 +44,7 @@ L.Control.Datetime = L.Control.extend({
     },
 
     _createDatetimeSelector: function(container) {
-        if (!L.Browser.mobile && this.options.title) {
+        if (!this.options.mobile && this.options.title) {
             var titleDiv = L.DomUtil.create('div', 'leaflet-control-datetime-title', container);
             titleDiv.innerHTML = this.options.title;
         }
@@ -99,7 +100,7 @@ L.Control.Datetime = L.Control.extend({
         sliderDiv.append(sliderRange);
 
         // Add datetime button controls
-        if (!L.Browser.mobile) {
+        if (!this.options.mobile) {
             var btn_size = 'lg';
         } else {
             var btn_size = '2x';
@@ -175,7 +176,7 @@ L.Control.Datetime = L.Control.extend({
         var txt = this._('Use local time') + ' (GMT' + formatTimezone() + ')';
         var spn = lbl.append(timecb).append($('<span>' + txt + '</span>'));
         var localdiv = $('<div>', {"class": "leaflet-control-datetime-localtime"}).append(spn);
-        if (L.Browser.mobile) {
+        if (this.options.mobile) {
             localdiv.hide();
         }
         localdiv.appendTo(container);
