@@ -1,8 +1,8 @@
 /**
  * Adds a time selector to Leaflet based maps.
  **/
-if (typeof console == "undefined") {
-        this.console = { log: function (msg) { /* do nothing since it would otherwise break IE */} };
+if (console === undefined) {
+    this.console = { log: function (msg) { /* do nothing since it would otherwise break IE */} };
 }
 
 L.Control.Datetime = L.Control.extend({
