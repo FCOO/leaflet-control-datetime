@@ -7,16 +7,16 @@ if (typeof console == "undefined") {
 
 L.Control.Datetime = L.Control.extend({
     options: {
-          datetimes: new Array()
-        , callback: null
-        , title: null
-        , language: null
-        , position: 'topright'
-        , mobile: false
-        , visibility: 'visible'
-        , vertical: false
-        , localtime: false
-        , initialDatetime: null
+        datetimes: [],
+        callback: null,
+        title: null,
+        language: null,
+        position: 'topright',
+        mobile: false,
+        visibility: 'visible',
+        vertical: false,
+        localtime: false,
+        initialDatetime: null
     },
 
     initialize: function(options) {
@@ -57,7 +57,7 @@ L.Control.Datetime = L.Control.extend({
             option.value = date.toISOString();
             //option.text = date.toISOString().substr(0,16);
             var locmoment = moment(date);
-            if (this.options.language != null) {
+            if (this.options.language !== null) {
                 locmoment.locale(this.options.language);
             }
             locmoment = locmoment.format('LLLL');
@@ -65,19 +65,19 @@ L.Control.Datetime = L.Control.extend({
             option.text = locmoment;
             //option.text = date.toString().split(' (')[0];
             selectList.appendChild(option);
-            if (this.options.initialDatetime != null) {
+            if (this.options.initialDatetime !== null) {
                 if (this.options.initialDatetime.getTime() == date.getTime()) {
                     select_index = i1;
-                    if (this.options.callback != null) {
+                    if (this.options.callback !== null) {
                         this.options.callback('datetime', option.value);
                     }
                 }
             }
         }
-        if (this.options.initialDatetime == null) {
+        if (this.options.initialDatetime === null) {
             select_index = this._getNowIndex();
-            if (this.options.callback != null) {
-                if (select_index != null) {
+            if (this.options.callback !== null) {
+                if (select_index !== null) {
                     this.options.callback('datetime', selectList.options[select_index].value);
                 }
             }
@@ -100,10 +100,11 @@ L.Control.Datetime = L.Control.extend({
         sliderDiv.append(sliderRange);
 
         // Add datetime button controls
+        var btn_size;
         if (!this.options.mobile) {
-            var btn_size = 'lg';
+            btn_size = 'lg';
         } else {
-            var btn_size = '2x';
+            btn_size = '2x';
         }
         var buttonDiv = L.DomUtil.create('div', 'leaflet-control-datetime-buttondiv', container);
         var startButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-fast-backward fa-' + btn_size + '"></i></button>');
@@ -140,7 +141,7 @@ L.Control.Datetime = L.Control.extend({
             var datetimes = select._instance.options.datetimes;
             for (var i=0; i<datetimes.length; i++) {
                 var locmoment = moment(datetimes[i]);
-                if (select._instance.options.language != null) {
+                if (select._instance.options.language !== null) {
                     locmoment.locale(select._instance.options.language);
                 }
                 if (this.checked) {
@@ -202,17 +203,19 @@ L.Control.Datetime = L.Control.extend({
         // Find indices for min and max
         var minDiff = 10000000000;
         var imin = null;
+        var i;
+        var m;
         for (i in datetimes) {
-            var m = Math.abs(tmin - datetimes[i]);
+            m = Math.abs(tmin - datetimes[i]);
             if (m < minDiff) { 
                 minDiff = m;
                 imin = parseInt(i);
             }
         }
-        var minDiff = 10000000000;
+        minDiff = 10000000000;
         var imax = null;
         for (i in datetimes) {
-            var m = Math.abs(tmax - datetimes[i]);
+            m = Math.abs(tmax - datetimes[i]);
             if (m < minDiff) { 
                 minDiff = m;
                 imax = parseInt(i);
@@ -294,6 +297,7 @@ L.Control.Datetime = L.Control.extend({
         var now = new Date();
         var minDiff = 10000000000;
         var index = null;
+        var i;
         for (i in options) {
             var m = Math.abs(now - options[i]);
             if (m < minDiff) { 
