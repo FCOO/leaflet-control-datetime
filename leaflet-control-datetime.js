@@ -121,6 +121,15 @@ L.Control.Datetime = L.Control.extend({
         nowButton.click(this._datetimeNow);
         nowButton.appendTo(buttonDiv);
 
+        var playButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-play fa-' + btn_size + '"></i></button>');
+        //playButton.click(this._datetimePlay);
+        playButton.appendTo(buttonDiv);
+
+        var pauseButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-pause fa-' + btn_size + '"></i></button>');
+        //pauseButton.click(this._datetimePause);
+        pauseButton.hide();
+        pauseButton.appendTo(buttonDiv);
+
         var forwardButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-step-forward fa-' + btn_size + '"></i></button>');
         forwardButton.click(this._datetimeForward);
         forwardButton.appendTo(buttonDiv);
