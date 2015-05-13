@@ -16,6 +16,7 @@ L.Control.Datetime = L.Control.extend({
         visibility: 'visible',
         vertical: false,
         localtime: false,
+        prefetch: false,
         initialDatetime: null
     },
 
@@ -316,22 +317,26 @@ L.Control.Datetime = L.Control.extend({
         var inst = select._instance;
         inst._datetimeUpdate(select);
 
-        // Prefetch next timestep - implement somewhere else
-        /*
-        if (index < select.length - 2) {
-            this._map.eachLayer(function (layer) {
-                if (layer._overlay !== undefined && layer._overlay === true) {
-                    if (layer.getTimesteps !== undefined) {
-                        var timesteps = layer.getTimesteps();
-                        if (timesteps !== null && timesteps.length > 1) {
-                            var wmsParams = {'time':  select.options[index+1].value};
-                            layer.prefetch(wmsParams);
+        // Prefetch next timestep
+        if (inst.options.prefetch) {
+            if (index < select.length - 2) {
+                inst._map.eachLayer(function (layer) {
+                    // Filter out base layers
+                    if (layer._overlay !== undefined && layer._overlay === true) {
+                        // Filter out layers with no time instance variable
+                        if (layer.timesteps !== undefined) {
+                            var timesteps = layer.timesteps;
+                            // Filter out layers where timesteps are not yet
+                            // initialized and those with only one timestep
+                            if (timesteps !== null && timesteps.length > 1) {
+                                var wmsParams = {'time':  select.options[index+1].value};
+                                layer.prefetch(wmsParams);
+                            }
                         }
                     }
-                }
-            });
+                });
+            }
         }
-        */
     },
 
     _datetimeEnd: function(pEvent) {
