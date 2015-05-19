@@ -1,0 +1,14 @@
+{
+  "name": "Leaflet",
+  "homepage": "https://github.com/jblarsen/Leaflet",
+  "_release": "9a538dad18",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "9a538dad182c7e0be073c2a799929419c8f35fcc"
+  },
+  "_source": "https://github.com/jblarsen/Leaflet.git",
+  "_target": "master",
+  "_originalSource": "https://github.com/jblarsen/Leaflet.git",
+  "_direct": true
+}
