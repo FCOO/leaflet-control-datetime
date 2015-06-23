@@ -103,30 +103,35 @@ L.Control.Datetime = L.Control.extend({
         // Add datetime button controls
         var btn_size;
         if (!this.options.mobile) {
-            btn_size = 'lg';
+            btn_size = '125%';
         } else {
-            btn_size = '2x';
+            btn_size = '200%';
         }
         var buttonDiv = L.DomUtil.create('div', 'leaflet-control-datetime-buttondiv', container);
-        var startButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-fast-backward fa-' + btn_size + '"></i></button>');
+        var startButton = $('<button class="btn btn-default btn-lg"><i class="icon icon-to-start-alt"></i></button>');
+        startButton.css('font-size', btn_size);
         startButton.click(this._datetimeStart);
         startButton.appendTo(buttonDiv);
 
-        var backButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-step-backward fa-' + btn_size + '"></i></button>');
+        var backButton = $('<button class="btn btn-default btn-lg"><i class="icon icon-to-start"></i></button>');
+        backButton.css('font-size', btn_size);
         backButton.click(this._datetimeBack);
         backButton.appendTo(buttonDiv);
 
         var nowstr = this._('Now');
-        nowstr = '<button class="btn btn-default btn-lg"><span class="fa fa-' + btn_size + '">' + nowstr + '</span></button>';
+        nowstr = '<button class="btn btn-default btn-lg"><span class="icon">' + nowstr + '</span></button>';
         var nowButton = $(nowstr);
+        nowButton.css('font-size', btn_size);
         nowButton.click(this._datetimeNow);
         nowButton.appendTo(buttonDiv);
 
-        var forwardButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-step-forward fa-' + btn_size + '"></i></button>');
+        var forwardButton = $('<button class="btn btn-default btn-lg"><i class="icon icon-to-end"></i></button>');
+        forwardButton.css('font-size', btn_size);
         forwardButton.click(this._datetimeForward);
         forwardButton.appendTo(buttonDiv);
 
-        var endButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-fast-forward fa-' + btn_size + '"></i></button>');
+        var endButton = $('<button class="btn btn-default btn-lg"><i class="icon icon-to-end-alt"></i></button>');
+        endButton.css('font-size', btn_size);
         endButton.click(this._datetimeEnd);
         endButton.appendTo(buttonDiv);
 

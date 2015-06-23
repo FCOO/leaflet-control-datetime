@@ -1,0 +1,5 @@
+
+.icon-to-start-alt:before { content: '\e800'; } /* '' */
+.icon-to-end-alt:before { content: '\e801'; } /* '' */
+.icon-to-end:before { content: '\e802'; } /* '' */
+.icon-to-start:before { content: '\e803'; } /* '' */

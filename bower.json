@@ -20,7 +20,6 @@
   ],
   "dependencies": {
     "leaflet": "https://github.com/jblarsen/Leaflet.git#master",
-    "fontawesome": "~4.3.0",
     "jquery-ui": "~1.11.3",
     "moment": "~2.9.0"
   }
