@@ -33,10 +33,32 @@
 }
 
 #leaflet-control-datetime-range {
-        height:100%;
-        top: 0;
-        width: 0%;
-        background: #00CC00;
+    height:100%;
+    top: 0;
+    width: 0%;
+    background: #00CC00;
+}
+
+div.leaflet-control-datetime-localtime {
+    display: none;
+}
+div.leaflet-control-datetime-title {
+    display: none;
+}
+button.btn-default {
+    font-size: 200%;
+}
+
+@media screen and (min-width: 641px) and (min-height: 641px) {
+    button.btn-default {
+        font-size: 125%;
+    }
+    div.leaflet-control-datetime-title {
+        display: block;
+    }
+    div.leaflet-control-datetime-localtime {
+        display: block;
+    }
 }
 
 /* We override the jQuery UI slider colors */

@@ -12,7 +12,6 @@ L.Control.Datetime = L.Control.extend({
         title: null,
         language: null,
         position: 'topright',
-        mobile: false,
         visibility: 'visible',
         vertical: false,
         localtime: false,
@@ -45,7 +44,7 @@ L.Control.Datetime = L.Control.extend({
     },
 
     _createDatetimeSelector: function(container) {
-        if (!this.options.mobile && this.options.title) {
+        if (this.options.title) {
             var titleDiv = L.DomUtil.create('div', 'leaflet-control-datetime-title', container);
             titleDiv.innerHTML = this.options.title;
         }
@@ -101,37 +100,26 @@ L.Control.Datetime = L.Control.extend({
         sliderDiv.append(sliderRange);
 
         // Add datetime button controls
-        var btn_size;
-        if (!this.options.mobile) {
-            btn_size = '125%';
-        } else {
-            btn_size = '200%';
-        }
         var buttonDiv = L.DomUtil.create('div', 'leaflet-control-datetime-buttondiv', container);
         var startButton = $('<button class="btn btn-default btn-lg"><i class="icon icon-to-start-alt"></i></button>');
-        startButton.css('font-size', btn_size);
         startButton.click(this._datetimeStart);
         startButton.appendTo(buttonDiv);
 
         var backButton = $('<button class="btn btn-default btn-lg"><i class="icon icon-to-start"></i></button>');
-        backButton.css('font-size', btn_size);
         backButton.click(this._datetimeBack);
         backButton.appendTo(buttonDiv);
 
         var nowstr = this._('Now');
         nowstr = '<button class="btn btn-default btn-lg"><span class="icon">' + nowstr + '</span></button>';
         var nowButton = $(nowstr);
-        nowButton.css('font-size', btn_size);
         nowButton.click(this._datetimeNow);
         nowButton.appendTo(buttonDiv);
 
         var forwardButton = $('<button class="btn btn-default btn-lg"><i class="icon icon-to-end"></i></button>');
-        forwardButton.css('font-size', btn_size);
         forwardButton.click(this._datetimeForward);
         forwardButton.appendTo(buttonDiv);
 
         var endButton = $('<button class="btn btn-default btn-lg"><i class="icon icon-to-end-alt"></i></button>');
-        endButton.css('font-size', btn_size);
         endButton.click(this._datetimeEnd);
         endButton.appendTo(buttonDiv);
 
@@ -183,9 +171,6 @@ L.Control.Datetime = L.Control.extend({
         var txt = this._('Use local time') + ' (GMT' + formatTimezone() + ')';
         var spn = lbl.append(timecb).append($('<span>' + txt + '</span>'));
         var localdiv = $('<div>', {"class": "leaflet-control-datetime-localtime"}).append(spn);
-        if (this.options.mobile) {
-            localdiv.hide();
-        }
         localdiv.appendTo(container);
     },
 
