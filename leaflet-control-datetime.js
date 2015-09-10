@@ -101,25 +101,25 @@ L.Control.Datetime = L.Control.extend({
 
         // Add datetime button controls
         var buttonDiv = L.DomUtil.create('div', 'leaflet-control-datetime-buttondiv', container);
-        var startButton = $('<button class="btn btn-default btn-lg"><i class="icon icon-to-start-alt"></i></button>');
+        var startButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-fast-backward"></i></button>');
         startButton.click(this._datetimeStart);
         startButton.appendTo(buttonDiv);
 
-        var backButton = $('<button class="btn btn-default btn-lg"><i class="icon icon-to-start"></i></button>');
+        var backButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-step-backward"></i></button>');
         backButton.click(this._datetimeBack);
         backButton.appendTo(buttonDiv);
 
         var nowstr = this._('Now');
-        nowstr = '<button class="btn btn-default btn-lg"><span class="icon">' + nowstr + '</span></button>';
+        nowstr = '<button class="btn btn-default btn-lg"><span class="fa">' + nowstr + '</span></button>';
         var nowButton = $(nowstr);
         nowButton.click(this._datetimeNow);
         nowButton.appendTo(buttonDiv);
 
-        var forwardButton = $('<button class="btn btn-default btn-lg"><i class="icon icon-to-end"></i></button>');
+        var forwardButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-step-forward"></i></button>');
         forwardButton.click(this._datetimeForward);
         forwardButton.appendTo(buttonDiv);
 
-        var endButton = $('<button class="btn btn-default btn-lg"><i class="icon icon-to-end-alt"></i></button>');
+        var endButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-fast-forward"></i></button>');
         endButton.click(this._datetimeEnd);
         endButton.appendTo(buttonDiv);
 
