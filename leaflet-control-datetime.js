@@ -34,6 +34,14 @@ L.Control.Datetime = L.Control.extend({
     onAdd: function(map) {
         this._map = map;
         this._map.on("overlayadd overlayremove", this._layersChanged, this);
+
+        // Let subscribers know of initial timezone state
+        var timezone = 'utc';
+        if (this._timezone[0].checked) {
+            timezone = 'local';
+        }
+        map.fire('timezonechange', {timezone: timezone});
+
         return this._container;
     },
 
@@ -44,6 +52,7 @@ L.Control.Datetime = L.Control.extend({
     },
 
     _createDatetimeSelector: function(container) {
+        var that = this;
         if (this.options.title) {
             var titleDiv = L.DomUtil.create('div', 'leaflet-control-datetime-title', container);
             titleDiv.innerHTML = this.options.title;
@@ -128,7 +137,8 @@ L.Control.Datetime = L.Control.extend({
                         type: "checkbox",
                         checked: "checked",
                         "class": "leaflet-control-datetime-localtime-checkbox"
-                     });
+        });
+        this._timezone = timecb;
         var callback = this.options.callback;
         timecb.click(function(pEvent) {
             var select = $('.leaflet-control-datetime-dateselect')[0];
@@ -154,8 +164,16 @@ L.Control.Datetime = L.Control.extend({
             if (callback && typeof callback == 'function') {
                 callback('timezone', this.checked);
             }
+
+            // We will migrate to Leaflet signals instead of a callback:
+            var timezone = 'utc';
+            if (this.checked) {
+                timezone = 'local';
+            }
+            that._map.fire('timezonechange', {timezone: timezone});
         });
         timecb._instance = this;
+
         var lbl = $('<label>');
         var d = new Date();
         function pad(num) {
