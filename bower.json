@@ -24,6 +24,7 @@
     "moment": "~2.9.0",
     "moment-timezone": "~0.4.0",
     "fontawesome": "~4.4.0",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "jstz.min": "https://bitbucket.org/pellepim/jstimezonedetect/raw/3a00f59861bddc0d8d169c54dc7b1e7a983b6a3d/dist/jstz.min.js"
   }
 }

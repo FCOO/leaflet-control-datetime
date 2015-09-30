@@ -132,6 +132,31 @@ L.Control.Datetime = L.Control.extend({
         endButton.click(this._datetimeEnd);
         endButton.appendTo(buttonDiv);
 
+        /*
+        // Add timezone selector
+        // Find all timezones
+        var timezones_all = moment.tz.names();
+        // Filter only Atlantic and Europe timezones
+        var timezones = $.grep(timezones_all, function(tz) {
+            var regex = /(Atlantic|Europe)\//;
+            return regex.test(tz);
+        });
+        // Set local timezone as first timezone
+        var timezone_local = jstz.determine().name();
+        var index_local = timezones.indexOf(timezone_local);
+        if (index_local > -1) {
+            timezones.splice(index_local, 1);
+        }
+        timezones.splice(0, 0, timezone_local);
+        // Set UTC as second timezone
+        timezones.splice(1, 0, 'UTC');
+        var selectTimezone = $(L.DomUtil.create('select', 'leaflet-control-datetime-timezoneselect', container));
+        selectTimezone.append($("<option>").attr('disabled', 'disabled').attr('selected', 'selected').text('Select timezone'));
+        $(timezones).each(function() {
+            selectTimezone.append($("<option>").attr('value', this).text(this));
+        });
+        */
+        
         // Add local time checkbox
         var timecb = $('<input>', {
                         type: "checkbox",

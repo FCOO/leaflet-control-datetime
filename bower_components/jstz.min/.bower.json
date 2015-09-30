@@ -1,0 +1,15 @@
+{
+  "name": "jstz.min",
+  "_cacheHeaders": {
+    "ETag": "\"6a56f76cbd16e7411b8bcdb18f4cf662\"",
+    "Last-Modified": "Thu, 17 Sep 2015 08:53:23 GMT",
+    "Content-Language": "en",
+    "Content-Length": "11922",
+    "Content-Type": "text/plain"
+  },
+  "_release": "e-tag:6a56f76cb",
+  "main": "index.js",
+  "_source": "https://bitbucket.org/pellepim/jstimezonedetect/raw/3a00f59861bddc0d8d169c54dc7b1e7a983b6a3d/dist/jstz.min.js",
+  "_target": "*",
+  "_originalSource": "https://bitbucket.org/pellepim/jstimezonedetect/raw/3a00f59861bddc0d8d169c54dc7b1e7a983b6a3d/dist/jstz.min.js"
+}
