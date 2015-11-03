@@ -16,6 +16,7 @@ L.Control.Datetime = L.Control.extend({
         vertical: false,
         localtime: false,
         prefetch: false,
+        mobile: false,
         initialDatetime: null
     },
 
@@ -23,6 +24,9 @@ L.Control.Datetime = L.Control.extend({
         L.Util.setOptions(this, options);
         this._container = L.DomUtil.create('div',
             'leaflet-control-layers leaflet-control-layers-expanded leaflet-control-datetime');
+        if (this.options.mobile) {
+            $(this._container).addClass('leaflet-control-datetime-mobile');
+        };
         if (this.options.visibility == 'hidden') {
             $(this._container).css("visibility", this.options.visibility);
         }
