@@ -8,7 +8,6 @@ if (console === undefined) {
 L.Control.Datetime = L.Control.extend({
     options: {
         datetimes: [],
-        callback: null,
         title: null,
         language: null,
         position: 'topright',
@@ -17,6 +16,7 @@ L.Control.Datetime = L.Control.extend({
         localtime: false,
         prefetch: false,
         mobile: false,
+        syncMaps: [],
         initialDatetime: null
     },
 
@@ -32,12 +32,20 @@ L.Control.Datetime = L.Control.extend({
         }
         $(this._container).addClass("hide-on-print");
         L.DomEvent.disableClickPropagation(this._container);
-        this._createDatetimeSelector(this._container);
     },
 
     onAdd: function(map) {
+        var that = this;
         this._map = map;
         this._map.on("overlayadd overlayremove", this._layersChanged, this);
+        // Listen to other maps as well
+        $.each(this.options.syncMaps, function(index, syncMap) {
+            if (map !== syncMap) {
+                syncMap.on("overlayadd overlayremove", that._layersChanged, that);
+            }
+        });
+
+        this._createDatetimeSelector(this._container);
 
         // Let subscribers know of initial timezone state
         var timezone = 'utc';
@@ -50,8 +58,15 @@ L.Control.Datetime = L.Control.extend({
     },
 
     onRemove: function(map) {
+        var that = this;
         this._container.style.display = 'none';
         this._map.off("overlayadd overlayremove", this._layersChanged, this);
+        // Detach other map listeners as well
+        $.each(this.options.syncMaps, function(index, syncMap) {
+            if (map !== syncMap) {
+                syncMap.off("overlayadd overlayremove", that._layersChanged, that);
+            }
+        });
         this._map = null;
     },
 
@@ -81,18 +96,14 @@ L.Control.Datetime = L.Control.extend({
             if (this.options.initialDatetime !== null) {
                 if (this.options.initialDatetime.getTime() == date.getTime()) {
                     select_index = i1;
-                    if (this.options.callback !== null) {
-                        this.options.callback('datetime', option.value);
-                    }
+                    that._map.fire('datetimechange', {datetime: option.value});
                 }
             }
         }
         if (this.options.initialDatetime === null) {
             select_index = this._getNowIndex();
-            if (this.options.callback !== null) {
-                if (select_index !== null) {
-                    this.options.callback('datetime', selectList.options[select_index].value);
-                }
+            if (select_index !== null) {
+                that._map.fire('datetimechange', {datetime: selectList.options[select_index].value});
             }
         }
         selectList.onchange = this._datetimeChanged;
@@ -168,7 +179,6 @@ L.Control.Datetime = L.Control.extend({
                         "class": "leaflet-control-datetime-localtime-checkbox"
         });
         this._timezone = timecb;
-        var callback = this.options.callback;
         timecb.click(function(pEvent) {
             var select = $('.leaflet-control-datetime-dateselect')[0];
             var datetimes = select._instance.options.datetimes;
@@ -189,12 +199,7 @@ L.Control.Datetime = L.Control.extend({
                     //select.options[i].text = datetimes[i].toUTCString();
                 }
             }
-            // callback
-            if (callback && typeof callback == 'function') {
-                callback('timezone', this.checked);
-            }
-
-            // We will migrate to Leaflet signals instead of a callback:
+            // Send signal
             var timezone = 'utc';
             if (this.checked) {
                 timezone = 'local';
@@ -222,6 +227,13 @@ L.Control.Datetime = L.Control.extend({
     },
 
     _layersChanged: function(pEvent) {
+        var that = this;
+
+        // Send signal to subscribing layers that the time has changed
+        if (pEvent.type == 'overlayadd') {
+            this._datetimeChanged();
+        }
+
         // Find min and max time for selector (reversed)
         var datetimes = this.options.datetimes;
         var tmin = datetimes[datetimes.length-1];
@@ -236,6 +248,22 @@ L.Control.Datetime = L.Control.extend({
                         tmax = (timesteps[timesteps.length-1] > tmax ? timesteps[timesteps.length-1] : tmax);
                     }
                 }
+            }
+        });
+        // Also look in other maps
+        $.each(this.options.syncMaps, function(index, syncMap) {
+            if (that._map !== syncMap) {
+                syncMap.eachLayer(function (layer) {
+                    if (layer._overlay !== undefined && layer._overlay === true) {
+                        if (layer.timesteps !== undefined) {
+                            var timesteps = layer.timesteps;
+                            if (timesteps !== null && timesteps.length > 1) {
+                                tmin = (timesteps[0] < tmin ? timesteps[0] : tmin);
+                                tmax = (timesteps[timesteps.length-1] > tmax ? timesteps[timesteps.length-1] : tmax);
+                            }
+                        }
+                    }
+                });
             }
         });
         // Find indices for min and max
@@ -278,10 +306,7 @@ L.Control.Datetime = L.Control.extend({
     _datetimeUpdate: function(select) {
         var date = select.options[select.selectedIndex].value;
         var container = select.parentElement;
-        // callback
-        if (this.options.callback && typeof this.options.callback == 'function') {
-            this.options.callback('datetime', date);
-        }
+        this._map.fire('datetimechange', {datetime: date});
     },
 
     _datetimeChanged: function(pEvent) {
