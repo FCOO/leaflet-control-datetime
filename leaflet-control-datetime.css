@@ -58,6 +58,13 @@ button.btn-default {
     font-size: 200%;
 }
 
+/* Use smaller font for small retina screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    button.btn-default {
+        font-size: 125%;
+    }
+}
+
 @media screen and (orientation: landscape) and (min-width: 641px) and (min-height: 481px), screen and (orientation: portrait) and (min-width: 481px) and (min-height: 641px) {
     button.btn-default {
         font-size: 125%;
