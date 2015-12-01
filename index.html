@@ -20,7 +20,7 @@
     <script src="bower_components/jstz.min/index.js"></script>
     <script src="leaflet-control-datetime.js" charset="UTF-8"></script>
     <script>
-        var map = L.map('map').setView([56.5, 12.0], 5);
+        var map = L.map('map', {attributionControl: true}).setView([56.5, 12.0], 5);
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors</a>'
@@ -36,6 +36,7 @@
             $info_elem.html("Event type = " + event_type + '<br />Current date = ' + current_date);
         }
         map.addControl(new L.Control.Datetime({'datetimes': myDates,
+                                               'position': 'bottomleft',
                                                'callback': myCallback}));
     </script>
 </body>
