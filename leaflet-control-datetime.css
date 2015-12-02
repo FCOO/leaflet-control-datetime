@@ -91,7 +91,7 @@ button.btn-default {
     .leaflet-control-datetime.leaflet-control {
         margin-left: 10px;
         margin-bottom: 10px;
-        border: 2px;
+        border: 2px solid rgba(0,0,0,0.2);
         padding: 6px;
         width: auto;
     }
