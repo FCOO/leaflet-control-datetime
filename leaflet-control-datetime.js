@@ -75,7 +75,7 @@ L.Control.Datetime = L.Control.extend({
             }
             locmoment = locmoment.format('LLLL');
             locmoment = locmoment.charAt(0).toUpperCase() + locmoment.slice(1);
-            option.text = locmoment;
+            $(option).text(locmoment);
             //option.text = date.toString().split(' (')[0];
             selectList.appendChild(option);
             if (this.options.initialDatetime !== null) {
