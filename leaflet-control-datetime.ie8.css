@@ -1,0 +1,21 @@
+button.btn-default {
+    width: auto;
+    height: auto;
+    font-size: 125%;
+}
+.leaflet-left {
+    width: auto;
+}
+.leaflet-control-datetime.leaflet-control {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border: 2px solid rgba(0,0,0,0.2);
+    padding: 6px;
+    width: auto;
+}
+div.leaflet-control-datetime-title {
+    display: block;
+}
+div.leaflet-control-datetime-localtime {
+    display: block;
+}
