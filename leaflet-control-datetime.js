@@ -63,7 +63,7 @@ L.Control.Datetime = L.Control.extend({
         }
         var selectList = L.DomUtil.create('select', 'leaflet-control-datetime-dateselect', container);
         selectList._instance = this;
-        var select_index = 0;
+        var select_index = null;
         for (var i1=0; i1<this.options.datetimes.length; i1++) {
             var option = document.createElement("option");
             var date = this.options.datetimes[i1];
@@ -79,7 +79,7 @@ L.Control.Datetime = L.Control.extend({
             //option.text = date.toString().split(' (')[0];
             selectList.appendChild(option);
             if (this.options.initialDatetime !== null) {
-                if (this.options.initialDatetime.getTime() == date.getTime()) {
+                if (this.options.initialDatetime.valueOf() == date.valueOf()) {
                     select_index = i1;
                     if (this.options.callback !== null) {
                         this.options.callback('datetime', option.value);
@@ -87,7 +87,7 @@ L.Control.Datetime = L.Control.extend({
                 }
             }
         }
-        if (this.options.initialDatetime === null) {
+        if (select_index === null) {
             select_index = this._getNowIndex();
             if (this.options.callback !== null) {
                 if (select_index !== null) {
