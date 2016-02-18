@@ -1,16 +1,32 @@
 {
-  "name": "leaflet-control-datetime",
-  "main": "leaflet-control-datetime.js",
-  "version": "1.0.0",
-  "homepage": "https://github.com/jblarsen/leaflet-control-datetime",
+  "name"		: "leaflet-control-datetime",
+  "version"	: "0.0.0",
+  "homepage": "https://github.com/FCOO/leaflet-control-datetime",
   "authors": [
-    "Jesper Baasch-Larsen <jla@fcoo.dk>"
+    "Jesper Larsen jla@fcoo.dk"
   ],
-  "description": "Leaflet control for changing dates and times",
-  "moduleType": [
-    "es6"
+  "description": "",
+  "main": [
+    "dist/leaflet-control-datetime.min.js",
+    "dist/leaflet-control-datetime.min.css"
   ],
-  "license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/FCOO/leaflet-control-datetime.git"
+	},
+
+	"dependencies": {
+    "leaflet": "latest"
+	},
+
+	"devDependencies": {
+    "bourbon": "latest",
+		"modernizr-mixin": "latest",
+		"mathsass": "latest"
+  },
+	
+	"license": "MIT",
+
   "ignore": [
     "**/.*",
     "node_modules",
@@ -18,13 +34,7 @@
     "test",
     "tests"
   ],
-  "dependencies": {
-    "leaflet": "https://github.com/jblarsen/Leaflet.git#master-dist",
-    "jquery-ui": "~1.11.4",
-    "moment": "~2.9.0",
-    "moment-timezone": "~0.4.0",
-    "fontawesome": "~4.4.0",
-    "jquery": "~2.1.4",
-    "jstz.min": "https://bitbucket.org/pellepim/jstimezonedetect/raw/3a00f59861bddc0d8d169c54dc7b1e7a983b6a3d/dist/jstz.min.js"
-  }
+  "moduleType": [
+    "es6"
+  ]
 }
