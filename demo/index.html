@@ -14,7 +14,8 @@
 </head>
 
 <body>
-	<div id="map" style="width: 800px; height: 600px"></div>
+	<div id="map"></div>
+	<div id="info"></div>
 
 
 	
@@ -22,19 +23,24 @@
 	<script src="bower_components.js"></script>
 	<script src="../src/leaflet-control-datetime.js"></script>
 	<script>
-		var map = L.map('map').setView([51.505, -0.09], 13);
-		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6IjZjNmRjNzk3ZmE2MTcwOTEwMGY0MzU3YjUzOWFmNWZhIn0.Y8bhBaUMqFiPrDRW9hieoQ', {
-			maxZoom: 18,
-			attribution: 'leaflet-control-datetime - Example',
-/*			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-				'Imagery � <a href="http://mapbox.com">Mapbox</a>',*/
-			id: 'mapbox.streets'
-		}).addTo(map);
-
-
-		var myLeafletControlDatetime = new L.LeafletControlDatetime( /*options*/ );
-		myLeafletControlDatetime.addTo(map);
+        var map = L.map('map', {attributionControl: true}).setView([56.5, 12.0], 5);
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors</a>'
+        }).addTo(map);
+        var myDates = [
+            new Date(2015,2,26,1,0,0,0),
+            new Date(2015,2,26,3,0,0,0),
+            new Date(2015,2,26,6,0,0,0),
+            new Date(2015,2,26,9,0,0,0),
+            new Date(2015,2,27,3,0,0,0)];
+        var $info_elem = $('#info');
+        var myCallback = function(event_type, current_date) {
+            $info_elem.html("Event type = " + event_type + '<br />Current date = ' + current_date);
+        }
+        map.addControl(new L.Control.Datetime({'datetimes': myDates,
+                                               'position': 'bottomleft',
+                                               'callback': myCallback}));
 
 	</script>
 </body>

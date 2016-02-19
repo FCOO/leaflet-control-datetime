@@ -1,32 +1,33 @@
 {
-  "name"		: "leaflet-control-datetime",
-  "version"	: "0.0.0",
+  "name": "leaflet-control-datetime",
+  "version": "0.0.0",
   "homepage": "https://github.com/FCOO/leaflet-control-datetime",
   "authors": [
     "Jesper Larsen jla@fcoo.dk"
   ],
-  "description": "",
+  "description": "Leaflet control for changing date and time for Leaflet layers supporting this feature",
   "main": [
     "dist/leaflet-control-datetime.min.js",
     "dist/leaflet-control-datetime.min.css"
   ],
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/FCOO/leaflet-control-datetime.git"
-	},
-
-	"dependencies": {
-    "leaflet": "latest"
-	},
-
-	"devDependencies": {
-    "bourbon": "latest",
-		"modernizr-mixin": "latest",
-		"mathsass": "latest"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/FCOO/leaflet-control-datetime.git"
   },
-	
-	"license": "MIT",
-
+  "dependencies": {
+    "leaflet": "latest",
+    "jquery-ui": "~1.11.4",
+    "moment": "latest",
+    "moment-timezone": "latest",
+    "jquery": "latest",
+    "fcoo-fontawesome": "fcoo/fcoo-fontawesome#^1.0.0"
+  },
+  "devDependencies": {
+    "bourbon": "latest",
+    "modernizr-mixin": "latest",
+    "mathsass": "latest"
+  },
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",

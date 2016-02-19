@@ -3,7 +3,7 @@
 
 
 ## Description
-This package is used for...
+Leaflet control for changing date and time for Leaflet layers supporting this feature.
 
 ## Installation
 ### bower
@@ -13,21 +13,22 @@ This package is used for...
 http://FCOO.github.io/leaflet-control-datetime/demo/ 
 
 ## Usage
-```var myLeafletControlDatetime = new LeafletControlDatetime( options );```
+Install the dependencies and include the Javascript and CSS file in this repository in your application (note that the CSS file uses an image from the images directory):
 
+### Example usage
 
-### options
-| Id | Type | Default | Description |
-| :--: | :--: | :-----: | --- |
-| options1 | boolean | true | If <code>true</code> the ... |
-| options2 | string | null | Contain the ... |
-
-### Methods
-
-    .methods1( arg1, arg2,...): Do something
-    .methods2( arg1, arg2,...): Do something else
-
-
+        var myDates = [
+            new Date(2015,2,26,1,0,0,0),
+            new Date(2015,2,26,3,0,0,0),
+            new Date(2015,2,26,6,0,0,0),
+            new Date(2015,2,26,9,0,0,0),
+            new Date(2015,2,27,3,0,0,0)];
+        var $info_elem = $('#info');
+        var myCallback = function(event_type, current_date) {
+            $info_elem.html("Event type = " + event_type + '<br />Current date = ' + current_date);
+        }
+        map.addControl(new L.Control.Datetime({'datetimes': myDates,
+                                               'callback': myCallback}));
 
 ## Copyright and License
 This plugin is licensed under the [MIT license](https://github.com/FCOO/leaflet-control-datetime/LICENSE).
