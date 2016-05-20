@@ -42,7 +42,7 @@
             if (this.options.visibility == 'hidden') {
                 $(this._container).css("visibility", this.options.visibility);
             }
-            $(this._container).addClass("hide-on-print");
+
             L.DomEvent.disableClickPropagation(this._container);
             this._createDatetimeSelector(this._container);
         },

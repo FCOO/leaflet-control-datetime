@@ -18,7 +18,7 @@
     
     L.Control.Datetime = L.Control.extend({
         options: {
-    		    VERSION: "1.0.0",
+    		    VERSION: "1.0.1",
             datetimes: [],
             callback: null,
             title: null,
@@ -42,7 +42,7 @@
             if (this.options.visibility == 'hidden') {
                 $(this._container).css("visibility", this.options.visibility);
             }
-            $(this._container).addClass("hide-on-print");
+
             L.DomEvent.disableClickPropagation(this._container);
             this._createDatetimeSelector(this._container);
         },
