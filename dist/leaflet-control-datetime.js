@@ -1,13 +1,13 @@
 /****************************************************************************
-	leaflet-control-datetime.js, 
+    leaflet-control-datetime.js, 
 
-	(c) 2016, FCOO
+    (c) 2016, FCOO
 
-	https://github.com/FCOO/leaflet-control-datetime
-	https://github.com/FCOO
+    https://github.com/FCOO/leaflet-control-datetime
+    https://github.com/FCOO
 
 ****************************************************************************/
-;(function ($, L, window, document, undefined) {
+(function ($, L, window, document, undefined) {
     "use strict";
     /**
      * Adds a time selector to Leaflet based maps.
@@ -18,7 +18,7 @@
     
     L.Control.Datetime = L.Control.extend({
         options: {
-    		    VERSION: "1.0.1",
+              VERSION: "1.0.2",
             datetimes: [],
             callback: null,
             title: null,
@@ -275,9 +275,9 @@
             if (imax > imin) {
                 // Calculate slider percentages
                 var ifull = datetimes.length-1,
-										pmin = imin/ifull*100.0,
-										pmax = imax/ifull*100.0,
-										pwidth = pmax - pmin;
+                                        pmin = imin/ifull*100.0,
+                                        pmax = imax/ifull*100.0,
+                                        pwidth = pmax - pmin;
                 // Set slider range to span min to max
                 sliderRange.css({"margin-left": pmin + "%", "width": pwidth + "%"});
             } else {

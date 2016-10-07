@@ -1,14 +1,14 @@
 {
   "name": "leaflet-control-datetime",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://github.com/FCOO/leaflet-control-datetime",
   "authors": [
     "Jesper Larsen jla@fcoo.dk"
   ],
   "description": "Leaflet control for changing date and time for Leaflet layers supporting this feature",
   "main": [
-    "dist/leaflet-control-datetime.min.js",
-    "dist/leaflet-control-datetime.min.css"
+    "dist/leaflet-control-datetime.js",
+    "dist/leaflet-control-datetime.css"
   ],
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
     "moment": "latest",
     "moment-timezone": "latest",
     "jquery": "latest",
-    "fcoo-fontawesome": "fcoo/fcoo-fontawesome#^1.0.0"
+    "font-awesome": "latest"
   },
   "devDependencies": {
     "bourbon": "latest",
