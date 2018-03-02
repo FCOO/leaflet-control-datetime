@@ -114,25 +114,25 @@ L.Control.Datetime = L.Control.extend({
 
         // Add datetime button controls
         var buttonDiv = L.DomUtil.create('div', 'leaflet-control-datetime-buttondiv', container);
-        var startButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-fast-backward"></i></button>');
+        var startButton = $('<button class="btn btn-default btn-sm"><i class="fa fa-fast-backward"></i></button>');
         startButton.click(this._datetimeStart);
         startButton.appendTo(buttonDiv);
 
-        var backButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-step-backward"></i></button>');
+        var backButton = $('<button class="btn btn-default btn-sm"><i class="fa fa-step-backward"></i></button>');
         backButton.click(this._datetimeBack);
         backButton.appendTo(buttonDiv);
 
         var nowstr = this._('Now');
-        nowstr = '<button class="btn btn-default btn-lg"><span class="fa">' + nowstr + '</span></button>';
+        nowstr = '<button class="btn btn-default btn-sm"><span class="fa">' + nowstr + '</span></button>';
         var nowButton = $(nowstr);
         nowButton.click(this._datetimeNow);
         nowButton.appendTo(buttonDiv);
 
-        var forwardButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-step-forward"></i></button>');
+        var forwardButton = $('<button class="btn btn-default btn-sm"><i class="fa fa-step-forward"></i></button>');
         forwardButton.click(this._datetimeForward);
         forwardButton.appendTo(buttonDiv);
 
-        var endButton = $('<button class="btn btn-default btn-lg"><i class="fa fa-fast-forward"></i></button>');
+        var endButton = $('<button class="btn btn-default btn-sm"><i class="fa fa-fast-forward"></i></button>');
         endButton.click(this._datetimeEnd);
         endButton.appendTo(buttonDiv);
 
@@ -160,7 +160,7 @@ L.Control.Datetime = L.Control.extend({
             selectTimezone.append($("<option>").attr('value', this).text(this));
         });
         */
-        
+
         // Add local time checkbox
         var timecb = $('<input>', {
                         type: "checkbox",
@@ -245,7 +245,7 @@ L.Control.Datetime = L.Control.extend({
         var m;
         for (i in datetimes) {
             m = Math.abs(tmin - datetimes[i]);
-            if (m < minDiff) { 
+            if (m < minDiff) {
                 minDiff = m;
                 imin = parseInt(i);
             }
@@ -254,7 +254,7 @@ L.Control.Datetime = L.Control.extend({
         var imax = null;
         for (i in datetimes) {
             m = Math.abs(tmax - datetimes[i]);
-            if (m < minDiff) { 
+            if (m < minDiff) {
                 minDiff = m;
                 imax = parseInt(i);
             }
@@ -338,13 +338,13 @@ L.Control.Datetime = L.Control.extend({
         var i;
         for (i in options) {
             var m = Math.abs(now - options[i]);
-            if (m < minDiff) { 
-                minDiff = m; 
-                index = i; 
+            if (m < minDiff) {
+                minDiff = m;
+                index = i;
             }
         }
         return index;
-    }, 
+    },
 
     _datetimeForward: function(pEvent) {
         var select = $('select.leaflet-control-datetime-dateselect')[0];

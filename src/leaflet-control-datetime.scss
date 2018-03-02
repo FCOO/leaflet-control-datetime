@@ -1,5 +1,5 @@
 /***********************************************
-	leaflet-control-datetime.scss, 
+	leaflet-control-datetime.scss,
 
 	(c) 2016, FCOO
 
@@ -9,7 +9,7 @@
 
 ************************************************/
 //BOURBON - http://bourbon.io/
-@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+@import "../bower_components/bourbon/core/bourbon";
 
 //MODERNIZR-MIXIN - https://github.com/danielguillan/modernizr-mixin
 @import "../bower_components/modernizr-mixin/stylesheets/modernizr";
@@ -20,8 +20,8 @@
 body {
     padding: 0;
     margin: 0;
-}   
-    
+}
+
 html, body, #map {
     height: 100%;
 }
@@ -42,7 +42,7 @@ html, body, #map {
 
 .leaflet-control-datetime-localtime {
 	display: inline-block;
-} 
+}
 
 .leaflet-control-datetime-float-left {
 	float: left;
@@ -53,7 +53,7 @@ html, body, #map {
 }
 
 .leaflet-control-datetime-datediv {
-	cursor: pointer; 
+	cursor: pointer;
 }
 
 .leaflet-control-datetime-clearfloat {
@@ -74,7 +74,6 @@ div.leaflet-control-datetime-title {
     display: none;
 }
 button.btn-default {
-    font-size: 175%;
     width: 20%;
 }
 
@@ -102,7 +101,7 @@ button.btn-default {
     button.btn-default {
         width: auto;
         height: auto;
-        font-size: 125%;
+//        font-size: 125%;
     }
     .leaflet-left {
         width: auto;

@@ -1,5 +1,5 @@
 /***********************************************
-	leaflet-control-datetime.scss, 
+	leaflet-control-datetime.scss,
 
 	(c) 2016, FCOO
 
@@ -55,7 +55,6 @@ div.leaflet-control-datetime-title {
   display: none; }
 
 button.btn-default {
-  font-size: 175%;
   width: 20%; }
 
 .leaflet-left {
@@ -78,8 +77,7 @@ button.btn-default {
 @media screen and (orientation: landscape) and (min-width: 641px) and (min-height: 481px), screen and (orientation: portrait) and (min-width: 481px) and (min-height: 641px) {
   button.btn-default {
     width: auto;
-    height: auto;
-    font-size: 125%; }
+    height: auto; }
   .leaflet-left {
     width: auto; }
   .leaflet-control-datetime.leaflet-control {
