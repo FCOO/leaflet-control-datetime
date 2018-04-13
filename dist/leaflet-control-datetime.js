@@ -18,7 +18,7 @@
     
     L.Control.Datetime = L.Control.extend({
         options: {
-              VERSION: "1.0.3",
+              VERSION: "1.0.4",
             datetimes: [],
             callback: null,
             title: null,
